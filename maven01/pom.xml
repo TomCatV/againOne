@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.vince.maven</groupId>
+    <artifactId>maven01</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <modules>
+        <module>../maven03</module>
+        <module>../maven04</module>
+    </modules>
+
+
+    <name>maven01</name>
+    <properties>
+<!--  properties 给父自定义版本号 使用时用el表达式      -->
+         <junit-version>4.12</junit-version>
+    </properties>
+    <dependencyManagement>
+        <!--加入dependencyManagement管理父依赖 子不会无条件继承
+
+        子要用父依赖 需要自己配置 不用写版本号 用的是父的
+        写版本号 用自己的(自己下载)
+
+        -->
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+                <scope>qqq</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+</project>
